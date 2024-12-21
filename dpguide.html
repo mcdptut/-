@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Comprehensive Guide to Minecraft Datapacks">
+    <meta name="keywords" content="Minecraft, Datapacks, Guide, Customization">
+    <meta name="author" content="realcinupe">
+    <title>Comprehensive Guide to Minecraft Datapacks</title>
+    <style>
+        :root {
+            --background-light: #f4f4f9;
+            --background-code: rgb(154, 154, 154);
+            --background-dark: #1e1e2f;
+            --text-color: #333;
+            --text-light: #ddd;
+            --header-color: #6c5ce7;
+            --toggle-bg-light: #ccc;
+            --toggle-bg-dark: #6c5ce7;
+            --toggle-icon-light: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns%3D%22http://www.w3.org/2000/svg%22 fill%3D%22%23ffffff%22 viewBox%3D%220 0 24 24%22%3E%3Cpath d%3D%22M12 18a6 6 0 100-12 6 6 0 000 12z%22/%3E%3C/svg%3E');
+            --toggle-icon-dark: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns%3D%22http://www.w3.org/2000/svg%22 fill%3D%22%23f9d71c%22 viewBox%3D%220 0 24 24%22%3E%3Cpath d%3D%22M6.76 4.84l-1.8-1.79-1.42 1.42 1.79 1.79 1.43-1.42zm10.5 14.32l1.8 1.79 1.42-1.42-1.79-1.79-1.43 1.42zM4 13H0v-2h4v2zm20 0h-4v-2h4v2zm-8 10h-2v-4h2v4zm0-20h-2V0h2v4zM6.76 19.16l-1.8 1.79 1.42 1.42 1.79-1.79-1.43-1.42zm12.02-12.02l1.8-1.79-1.42-1.42-1.79 1.79 1.41 1.42zM12 6a6 6 0 000 12 6 6 0 000-12z%22/%3E%3C/svg%3E');
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-light);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body.dark {
+            background-color: var(--background-dark);
+            color: var(--text-light);
+        }
+
+        header {
+            background-color: var(--header-color);
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        main {
+            padding: 2rem;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        h2 {
+            color: var(--header-color);
+        }
+
+        pre {
+            background-color: #f9f9f9;
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+
+        ul, ol {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        ul li, ol li {
+            margin: 0.5rem 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: var(--header-color);
+            color: white;
+            margin-top: 2rem;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            width: 40px;
+            height: 20px;
+            background: var(--toggle-bg-light);
+            border-radius: 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            padding: 2px;
+            transition: background-color 0.3s ease;
+        }
+
+        .toggle-circle {
+            width: 16px;
+            height: 16px;
+            background-color: white;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            background-image: var(--toggle-icon-light);
+            background-size: cover;
+            background-position: center;
+        }
+
+        body.dark .theme-toggle {
+            background: var(--toggle-bg-dark);
+        }
+
+        body.dark .toggle-circle {
+            transform: translateX(20px);
+            background-image: var(--toggle-icon-dark);
+        }
+
+        pre {
+            background-color: rgb(41, 41, 41);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Comprehensive Guide to Minecraft Datapacks</h1>
+    </header>
+
+    <div class="theme-toggle" id="themeToggle">
+        <div class="toggle-circle"></div>
+    </div>
+
+    <main>
+        <section id="introduction">
+            <h2>Introduction</h2>
+            <p>Minecraft datapacks are a powerful feature introduced in the Java Edition of the game. They allow players 
+                to customize and enhance gameplay without needing external mods or software. With datapacks, you can create 
+                new game mechanics, add custom recipes, modify world generation, and even design complex mini-games. This 
+                guide will walk you through the essentials of creating and using datapacks.</p>
+        </section>
+
+        <section id="what-are-datapacks">
+            <h2>What Are Datapacks?</h2>
+            <p>Datapacks are ZIP files or folders containing JSON and command files that modify or add features to your 
+                Minecraft world. They can alter recipes, advancements, loot tables, structures, and even world generation 
+                rules. They are stored in the <code>datapacks</code> folder of a Minecraft world save.</p>
+        </section>
+
+        <section id="how-to-create">
+            <h2>How to Create a Datapack</h2>
+            <ol>
+                <li>
+                    <strong>Create a Folder:</strong> Inside your Minecraft world's <code>datapacks</code> folder, create a 
+                    new folder and name it appropriately. For example, <code>my_first_datapack</code>.
+                </li>
+                <li>
+                    <strong>Add a Pack.mcmeta File:</strong> Inside your folder, create a file named <code>pack.mcmeta</code> 
+                    with the following content:
+                    <pre><code>{
+{
+    "pack": {
+        "pack_format": 15,
+        "description": "My First Datapack"
+    }
+}}
+</code></pre>
+</li>
+<li>
+    <strong>Organize the Structure:</strong> Within your datapack folder, create subfolders like <code>data</code> 
+    and organize them according to your requirements. For example:
+    <pre>
+my_first_datapack/
+|-- pack.mcmeta
+|-- data/
+|-- my_namespace/
+|-- functions/
+|-- recipes/
+|-- advancements/
+    </pre>
+</li>
+</ol>
+</section>
+
+<section id="functions">
+<h2>Functions in Datapacks</h2>
+<p>Functions are text files with the <code>.mcfunction</code> extension containing a series of Minecraft 
+commands. For example, creating a simple function to give a diamond can look like this:</p>
+<pre><code>give @p minecraft:diamond 1</code></pre>
+<p>Save this file inside the <code>functions</code> folder of your datapack. To execute it in the game, use:</p>
+<pre><code>/function my_namespace:my_function</code></pre>
+</section>
+
+<section id="testing">
+<h2>Testing Your Datapack</h2>
+<p>To test your datapack in-game:</p>
+<ul>
+<li>Place your datapack in the <code>datapacks</code> folder of a Minecraft world.</li>
+<li>Enter the world and use the command <code>/reload</code> to load your datapack.</li>
+<li>Check for errors in the game's output log if something isn't working as expected.</li>
+</ul>
+</section>
+
+<section id="examples">
+<h2>Example Projects</h2>
+<p>Here are some ideas for datapacks:</p>
+<ul>
+<li>Create custom mob drops or loot tables.</li>
+<li>Design mini-games or puzzles using command blocks and functions.</li>
+<li>Modify the crafting recipes to make rare items more accessible or balanced.</li>
+</ul>
+</section>
+
+<section id="conclusion">
+<h2>Conclusion</h2>
+<p>Minecraft datapacks open up endless possibilities for players to customize their gameplay experience. 
+Whether you want to tweak small features or create entirely new game mechanics, datapacks give you 
+the flexibility and tools to do so. Start experimenting, and who knows—you might create the next 
+big thing in Minecraft customization!</p>
+</section>
+</main>
+
+<footer>
+<p>&copy; 2024 Your Name. All rights reserved.</p>
+</footer>
+
+<script>
+const themeToggle = document.getElementById('themeToggle');
+const body = document.body;
+
+themeToggle.addEventListener('click', () => {
+body.classList.toggle('dark');
+});
+</script>
+</body>
+</html>
